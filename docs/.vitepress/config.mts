@@ -4,6 +4,7 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: "Re:Antagon",
   description: "Антагон - это ванильный майнкрафт сервер для 1.21 версий майнкрафта. На сервере добавлены кастомные предметы, мобы.",
+  base: '/antagon-site-new/', // base URL for GitHub Pages
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [

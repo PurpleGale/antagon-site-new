@@ -1,4 +1,5 @@
 {
+  "packageManager": "npm@10.2.4",
   "devDependencies": {
     "shiki": "^3.11.0",
     "vitepress": "^2.0.0-alpha.12"
