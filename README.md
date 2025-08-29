@@ -1,6 +1,6 @@
 # Re:Antagon - Документация
 
-[![Discord](https://img.shields.io/discord/YOUR_DISCORD_SERVER_ID?color=7289da&label=Discord&logo=discord&logoColor=white)](https://discord.gg/9hEPDZD24A)
+[![Discord](https://img.shields.io/discord/1285588070497910896?color=7289da&label=Discord&logo=discord&logoColor=white)](https://discord.gg/9hEPDZD24A)
 
 Этот репозиторий содержит документацию для Minecraft сервера Re:Antagon. Сайт построен с использованием [VitePress](https://vitepress.dev/).
 
