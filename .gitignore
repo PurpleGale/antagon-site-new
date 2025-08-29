@@ -38,3 +38,4 @@ yarn-error.log*
 # VitePress specific
 cache
 dist
+.vitepress
