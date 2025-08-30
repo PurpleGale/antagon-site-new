@@ -6,7 +6,10 @@ export default defineConfig({
   title: "Re:Antagon",
   titleTemplate: ':title | Re:Antagon',
   description: "Антагон - это ванильный майнкрафт сервер для 1.21 версий майнкрафта. На сервере добавлены кастомные предметы, мобы.",
-  head: [['link', { rel: 'icon', href: './assets/favicon.ico' }]],
+  head: [
+    ['link', { rel: 'icon', type: "image/x-icon", href: '/favicon.ico' }],
+    ['link', { rel: 'shortcut icon', type: "image/x-icon", href: '/favicon.ico' }]
+  ], 
   cleanUrls: true,
   lastUpdated: true,
   themeConfig: {
