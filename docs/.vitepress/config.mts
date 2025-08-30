@@ -19,7 +19,8 @@ export default defineConfig({
     nav: [
       { text: 'Главная', link: '/' },
       { text: 'Правила', link: '/rules' },
-      { text: 'Вики', link: '/guide/faq/' }
+      { text: 'Вики', link: '/guide/faq/' },
+      { text: 'Боги', link: '/gods/' }
     ],
     
     footer: {
@@ -44,43 +45,64 @@ export default defineConfig({
     },
     externalLinkIcon: true,
 
-    sidebar: [
-      {
-        text: 'Начало игры',
-        items: [
-          { text: 'Начало игры', link: '/guide/start' },
-          { text: 'Наша команда', link: '/guide/team' }
-        ]
-      },
-      {
-        text: 'Часто задаваемые вопросы',
-        items: [
-          { text: 'Общие вопросы', link: '/guide/faq/' },
-          { text: 'Экономика', link: '/guide/faq/economy' }
-        ]
-      },
-      {
-        text: 'Предметы',
-        items: [
-          { text: 'Обзор предметов', link: '/guide/items/' },
-          { text: 'Кастомные мечи', link: '/guide/items/swords' },
-          { text: 'Ядовитый меч', link: '/guide/items/poison_sword' }
-        ]
-      },
-      {
-        text: 'Механики',
-        items: [
-          { text: 'Обзор механик', link: '/guide/mechanics/' },
-          { text: 'Система приватов', link: '/guide/mechanics/protect' }
-        ]
-      },
-      {
-        text: 'Места',
-        items: [
-          { text: 'Места', link: '/guide/places/' }
-        ]
-      }
-    ],
+    sidebar: {
+      guide: [
+        {
+          text: 'Начало игры',
+          items: [
+            { text: 'Начало игры', link: '/guide/start' },
+            { text: 'Наша команда', link: '/guide/team' }
+          ]
+        },
+        {
+          text: 'Часто задаваемые вопросы',
+          items: [
+            { text: 'Общие вопросы', link: '/guide/faq/' },
+            { text: 'Экономика', link: '/guide/faq/economy' }
+          ]
+        },
+        {
+          text: 'Предметы',
+          items: [
+            { text: 'Обзор предметов', link: '/guide/items/' },
+            { text: 'Кастомные мечи', link: '/guide/items/swords' },
+            { text: 'Ядовитый меч', link: '/guide/items/poison_sword' }
+          ]
+        },
+        {
+          text: 'Механики',
+          items: [
+            { text: 'Обзор механик', link: '/guide/mechanics/' },
+            { text: 'Система приватов', link: '/guide/mechanics/protect' }
+          ]
+        },
+        {
+          text: 'Места',
+          items: [
+            { text: 'Места', link: '/guide/places/' }
+          ]
+        }
+      ],
+      gods: [
+        {
+          text: 'Боги',
+          items: [
+            { text: 'Война', link: '/gods/1_war' },
+            { text: 'Механизмы', link: '/gods/2_machinery' },
+            { text: 'Звёзды', link: '/gods/3_stars' },
+            { text: 'Знание', link: '/gods/4_knowledge' },
+            { text: 'Жизнь', link: '/gods/5_life' },
+            { text: 'Развитие', link: '/gods/6_growth' },
+            { text: 'Чистилище', link: '/gods/7_purgatory' },
+            { text: 'Океан', link: '/gods/8_ocean' },
+            { text: 'Пустота', link: '/gods/9_void' },
+            { text: 'Кровь', link: '/gods/10_blood' },
+            { text: 'Смерть', link: '/gods/11_death' },
+            { text: 'Хаос', link: '/gods/12_chaos' }
+          ]
+        }
+      ]
+    },
 
     socialLinks: [
       { icon: 'discord', link: 'https://discord.gg/4tGwATJt' }
