@@ -52,10 +52,6 @@ export default defineConfig({
   cleanUrls: true,
   lastUpdated: true,
 
-  vite: {
-    plugins: []
-  },
-
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     logo: './assets/logo.png',
