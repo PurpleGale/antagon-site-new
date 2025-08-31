@@ -1,12 +1,10 @@
 const { generateSitemap } = require('sitemap-ts');
 
-// Настройки для исключения путей
 const SITEMAP_CONFIG = {
   hostname: 'https://wiki.antagon.su/',
   outDir: 'docs/.vitepress/dist',
   extensions: ['html'],
   exclude: [
-    // Добавьте сюда пути, которые нужно исключить
     // '/admin',
     // '/private',
     // '/temp'
