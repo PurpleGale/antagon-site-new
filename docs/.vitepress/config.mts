@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress'
+import { generateSiteMap } from './generate-sitemap'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -8,10 +9,53 @@ export default defineConfig({
   description: "Антагон - это ванильный майнкрафт сервер для 1.21 версий майнкрафта. На сервере добавлены кастомные предметы, мобы.",
   head: [
     ['link', { rel: 'icon', type: "image/x-icon", href: '/favicon.ico' }],
-    ['link', { rel: 'shortcut icon', type: "image/x-icon", href: '/favicon.ico' }]
-  ], 
+    ['link', { rel: 'shortcut icon', type: "image/x-icon", href: '/favicon.ico' }],
+    // Open Graph / Facebook
+    ['meta', { property: 'og:type', content: 'website' }],
+    ['meta', { property: 'og:url', content: 'https://wiki.antagon.su/' }],
+    ['meta', { property: 'og:title', content: 'Re:Antagon - Minecraft Server Wiki' }],
+    ['meta', { property: 'og:description', content: 'Антагон - это ванильный майнкрафт сервер для 1.21 версий майнкрафта. На сервере добавлены кастомные предметы, мобы.' }],
+    ['meta', { property: 'og:image', content: 'https://wiki.antagon.su/logo.png' }],
+    // Twitter
+    ['meta', { property: 'twitter:card', content: 'summary_large_image' }],
+    ['meta', { property: 'twitter:url', content: 'https://wiki.antagon.su/' }],
+    ['meta', { property: 'twitter:title', content: 'Re:Antagon - Minecraft Server Wiki' }],
+    ['meta', { property: 'twitter:description', content: 'Антагон - это ванильный майнкрафт сервер для 1.21 версий майнкрафта. На сервере добавлены кастомные предметы, мобы.' }],
+    ['meta', { property: 'twitter:image', content: 'https://wiki.antagon.su/logo.png' }],
+    // Additional SEO
+    ['meta', { name: 'robots', content: 'index, follow' }],
+    ['meta', { name: 'author', content: 'Re:Antagon Team' }],
+    ['meta', { name: 'keywords', content: 'minecraft, server, antagon, wiki, гайд, предметы, мобы, 1.21' }],
+    ['link', { rel: 'canonical', href: 'https://wiki.antagon.su/' }],
+    // JSON-LD structured data
+    ['script', { type: 'application/ld+json' }, `{
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Re:Antagon",
+      "description": "Антагон - это ванильный майнкрафт сервер для 1.21 версий майнкрафта. На сервере добавлены кастомные предметы, мобы.",
+      "url": "https://wiki.antagon.su/",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Re:Antagon Team",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://wiki.antagon.su/logo.png"
+        }
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://wiki.antagon.su/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }`]
+  ],
   cleanUrls: true,
   lastUpdated: true,
+
+  vite: {
+    plugins: []
+  },
+
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     logo: './assets/logo.png',
