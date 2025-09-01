@@ -1,50 +1,74 @@
 import DefaultTheme from 'vitepress/theme'
-import { onMounted } from 'vue'
+
+function invert(color: string): string {
+  if (color.startsWith('#')) {
+    const hex = color.replace('#', '')
+    const r = parseInt(hex.substr(0, 2), 16)
+    const g = parseInt(hex.substr(2, 2), 16)
+    const b = parseInt(hex.substr(4, 2), 16)
+    return `rgba(${255 - r}, ${255 - g}, ${255 - b}, 1)`
+  }
+  let cleanColor = color.replace('rgb(', '').replace('rgba(', '').replace(')', '')
+  const parts = cleanColor.split(',').map(part => part.trim())
+  const r = parseInt(parts[0])
+  const g = parseInt(parts[1])
+  const b = parseInt(parts[2])
+  const a = parts.length > 3 ? parseFloat(parts[3]) : 1
+  return `rgba(${255 - r}, ${255 - g}, ${255 - b}, ${a})`
+}
+
+function getElementColors(): { textColor: string; backgroundColor: string } | null {
+  const element = document.querySelector('.VPContent')
+  if (!element) return null
+  
+  const computedStyle = window.getComputedStyle(element)
+  return {
+    textColor: computedStyle.color,
+    backgroundColor: computedStyle.backgroundColor
+  }
+}
+
+function applyInvertedSelectionColors(): void {
+  const colors = getElementColors()
+  if (!colors) return
+  
+  const invertedTextColor = invert(colors.textColor)
+  const invertedBgColor = invert(colors.backgroundColor)
+  
+  let styleElement = document.getElementById('inverted-selection-style')
+  if (!styleElement) {
+    styleElement = document.createElement('style')
+    styleElement.id = 'inverted-selection-style'
+    document.head.appendChild(styleElement)
+  }
+  
+  styleElement.textContent = `
+    .VPContent ::selection {
+      color: ${invertedTextColor} !important;
+      background-color: ${invertedBgColor} !important;
+    }
+    .VPContent::-moz-selection {
+      color: ${invertedTextColor} !important;
+      background-color: ${invertedBgColor} !important;
+    }
+  `
+}
 
 export default {
   extends: DefaultTheme,
   enhanceApp({ app }) {
     // Add analytics scripts only on client side
     if (typeof window !== 'undefined') {
-      onMounted(() => {
-        // Google Analytics 4
-        const gtagScript = document.createElement('script')
-        gtagScript.async = true
-        gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-P7LSNPZV1S'
-        document.head.appendChild(gtagScript)
-
-        const gtagConfig = document.createElement('script')
-        gtagConfig.innerHTML = `
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-P7LSNPZV1S');
-        `
-        document.head.appendChild(gtagConfig)
-
-        // Yandex Metrica
-        const ymScript = document.createElement('script')
-        ymScript.innerHTML = `
-          (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-          m[i].l=1*new Date();
-          for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-          k=e.createElement(t),a=e.scripts[0];k.async=1;k.src=r;a.parentNode.insertBefore(k,a)})
-          (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-
-          ym(103960154, "init", {
-            clickmap:true,
-            trackLinks:true,
-            accurateTrackBounce:true,
-            webvisor:true
-          });
-        `
-        document.head.appendChild(ymScript)
-
-        const ymNoscript = document.createElement('noscript')
-        const ymImg = document.createElement('div')
-        ymImg.innerHTML = '<img src="https://mc.yandex.ru/watch/103960154" style="position:absolute; left:-9999px;" alt="" />'
-        ymNoscript.appendChild(ymImg)
-        document.body.appendChild(ymNoscript)
+      window.addEventListener('load', () => {
+        setTimeout(() => {
+          applyInvertedSelectionColors()
+        }, 100)
+      })
+      
+      window.addEventListener('resize', () => {
+        setTimeout(() => {
+          applyInvertedSelectionColors()
+        }, 100)
       })
     }
   }
