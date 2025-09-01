@@ -47,7 +47,49 @@ export default defineConfig({
         "target": "https://wiki.antagon.su/search?q={search_term_string}",
         "query-input": "required name=search_term_string"
       }
-    }`]
+    }`],
+    // Google Analytics
+    [
+      'script',
+      { async: '', src: 'https://www.googletagmanager.com/gtag/js?id=G-P7LSNPZV1S' }
+    ],
+    [
+      'script',
+      {},
+      `window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-P7LSNPZV1S');`
+    ],
+    // Yandex Metrica
+    [
+      'script',
+      { async: '', src: 'https://mc.yandex.ru/metrika/tag.js' }
+    ],
+    [
+      'script',
+      {},
+      `
+      window.yandex_metrika_callbacks2 = window.yandex_metrika_callbacks2 || [];
+      window.yandex_metrika_callbacks2.push(function() {
+        try {
+          window.yaCounter103960154 = new Ya.Metrika2({
+            id: 103960154,
+            clickmap: true,
+            trackLinks: true,
+            accurateTrackBounce: true,
+            webvisor: true,
+            ecommerce: "dataLayer"
+          });
+        } catch(e) { }
+      });
+      `
+    ],
+    [
+      'noscript',
+      {},
+      '<div><img src="https://mc.yandex.ru/watch/103960154" style="position:absolute; left:-9999px;" alt="" /></div>'
+    ]
   ],
   cleanUrls: true,
   lastUpdated: true,
