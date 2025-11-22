@@ -8,6 +8,7 @@ export default defineConfig({
   titleTemplate: ':title | Re:Antagon',
   description: "Антагон - это ванильный майнкрафт сервер для 1.21 версий майнкрафта. На сервере добавлены кастомные предметы, мобы.",
   head: [
+    ['link', { rel: 'stylesheet', href: '/crafting.css' }],
     ['link', { rel: 'icon', type: "image/x-icon", href: '/favicon.ico' }],
     ['link', { rel: 'shortcut icon', type: "image/x-icon", href: '/favicon.ico' }],
     // Open Graph / Facebook
@@ -89,7 +90,11 @@ export default defineConfig({
       'noscript',
       {},
       '<div><img src="https://mc.yandex.ru/watch/103960154" style="position:absolute; left:-9999px;" alt="" /></div>'
-    ]
+    ],
+    // Google Fonts
+    [ 'link', { rel: 'preconnect', href: 'https://fonts.googleapis.com' }],
+    [ 'link', { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' }],
+    [ 'link', { href: 'https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap', rel: 'stylesheet' }]
   ],
   cleanUrls: true,
   lastUpdated: true,
@@ -101,7 +106,7 @@ export default defineConfig({
     nav: [
       { text: 'Главная', link: '/' },
       { text: 'Правила', link: '/rules' },
-      { text: 'Вики', link: '/guide/faq/' },
+      { text: 'Вики', link: '/guide/start/' },
       { text: 'Боги', link: '/gods/' }
     ],
     
@@ -140,6 +145,7 @@ export default defineConfig({
           text: 'Часто задаваемые вопросы',
           items: [
             { text: 'Общие вопросы', link: '/guide/faq/' },
+            { text: 'Фишки сервера', link: '/guide/faq/features' },
             { text: 'Экономика', link: '/guide/faq/economy' }
           ]
         },
@@ -147,8 +153,19 @@ export default defineConfig({
           text: 'Предметы',
           items: [
             { text: 'Обзор предметов', link: '/guide/items/' },
-            { text: 'Кастомные мечи', link: '/guide/items/swords' },
-            { text: 'Ядовитый меч', link: '/guide/items/poison_sword' }
+            { text: 'Общее', link: '/guide/items/index_0' },
+            { text: 'Война', link: '/guide/items/index_1' },
+            { text: 'Механизмы', link: '/guide/items/index_2' },
+            { text: 'Звёзды', link: '/guide/items/index_3' },
+            { text: 'Знания', link: '/guide/items/index_4' },
+            { text: 'Жизнь', link: '/guide/items/index_5' },
+            { text: 'Развитие', link: '/guide/items/index_6' },
+            { text: 'Чистилище', link: '/guide/items/index_7' },
+            { text: 'Океан', link: '/guide/items/index_8' },
+            { text: 'Пустота', link: '/guide/items/index_9' },
+            { text: 'Кровь', link: '/guide/items/index_10' },
+            { text: 'Смерть', link: '/guide/items/index_11' },
+            { text: 'Хаос', link: '/guide/items/index_12' },
           ]
         },
         {

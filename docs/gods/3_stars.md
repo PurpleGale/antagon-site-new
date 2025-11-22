@@ -5,6 +5,18 @@
 
 ---
 
+## Пример крафтовой сетки
+
+<CraftingRecipe 
+  :input1="'blaze_powder'"
+  :input2="'gunpowder'"
+  :input5="'coal'"
+  :output="'fire_charge'"
+  :output_count="3"
+  :shapeless="true"
+/>
+
+
 ## Подношения
 
 - **Положительные:**

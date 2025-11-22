@@ -1,4 +1,10 @@
+import type { Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
+import CraftingRecipe from './CraftingRecipe.vue'
+import FurnaceRecipe from './FurnaceRecipe.vue'
+import BrewingRecipe from './BrewingRecipe.vue'
+import StonecuttingRecipe from './StonecuttingRecipe.vue'
+import SmeltingRecipe from './SmeltingRecipe.vue'
 
 export default {
   extends: DefaultTheme,
@@ -6,8 +12,13 @@ export default {
     if (typeof window !== 'undefined') {
       document.addEventListener('selectionchange', applySelectionColorsStyle)
     }
+    app.component('CraftingRecipe', CraftingRecipe)
+    app.component('FurnaceRecipe', FurnaceRecipe)
+    app.component('BrewingRecipe', BrewingRecipe)
+    app.component('StonecuttingRecipe', StonecuttingRecipe)
+    app.component('SmeltingRecipe', SmeltingRecipe)
   }
-}
+} satisfies Theme
 
 function applySelectionColorsStyle() {
   const selection = window.getSelection()
